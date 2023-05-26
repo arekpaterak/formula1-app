@@ -1,2 +1,4 @@
 .vscode
 Formula1/bin
+
+*.db
