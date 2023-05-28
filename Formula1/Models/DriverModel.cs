@@ -21,9 +21,12 @@ namespace Formula1.Models
         public string Code { get; set; }
 
         [Display(Name = "Date of birth")]
+        [DisplayFormat(NullDisplayText = "Unknown")]
+        [DataType(DataType.Date)]
         public string DateOfBirth { get; set; }
 
-        [Display(Name = "Country")]
+        [Display(Name = "Nationality")]
+        [DisplayFormat(NullDisplayText = "Unknown")]
         public string Nationality { get; set; }
     }
 }

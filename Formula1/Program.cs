@@ -1,6 +1,9 @@
 using Microsoft.Data.Sqlite;
 using System.Security.Cryptography;
 using System.Text;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Formula1.Data;
 
 HashAlgorithm hashAlgorithm = MD5.Create();
 
@@ -52,6 +55,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Dodanie obsługi stron Razor
 builder.Services.AddRazorPages();
+builder.Services.AddDbContext<Formula1Context>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("Formula1Context") ?? throw new InvalidOperationException("Connection string 'Formula1Context' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
