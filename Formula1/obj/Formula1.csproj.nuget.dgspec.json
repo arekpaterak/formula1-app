@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Coding\\University\\S4\\PZ2\\formula1-app\\Formula1\\Formula1.csproj": {}
+    "/Users/mati/Desktop/PZ_projekt/formula1-app/Formula1/Formula1.csproj": {}
   },
   "projects": {
-    "D:\\Coding\\University\\S4\\PZ2\\formula1-app\\Formula1\\Formula1.csproj": {
+    "/Users/mati/Desktop/PZ_projekt/formula1-app/Formula1/Formula1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Coding\\University\\S4\\PZ2\\formula1-app\\Formula1\\Formula1.csproj",
+        "projectUniqueName": "/Users/mati/Desktop/PZ_projekt/formula1-app/Formula1/Formula1.csproj",
         "projectName": "Formula1",
-        "projectPath": "D:\\Coding\\University\\S4\\PZ2\\formula1-app\\Formula1\\Formula1.csproj",
-        "packagesPath": "C:\\Users\\arkad\\.nuget\\packages\\",
-        "outputPath": "D:\\Coding\\University\\S4\\PZ2\\formula1-app\\Formula1\\obj\\",
+        "projectPath": "/Users/mati/Desktop/PZ_projekt/formula1-app/Formula1/Formula1.csproj",
+        "packagesPath": "/Users/mati/.nuget/packages/",
+        "outputPath": "/Users/mati/Desktop/PZ_projekt/formula1-app/Formula1/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\arkad\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/Users/mati/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -86,7 +86,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.202/RuntimeIdentifierGraph.json"
         }
       }
     }
