@@ -39,17 +39,17 @@ body {
   margin-bottom: 20px;
 }
 
-.ulDrivers {
+.trDrivers {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.liDrivers {
+.tdDrivers {
   padding: 10px;
   border-bottom: 1px solid #ccc;
 }
 
-.liDrivers:last-child {
+.tdDrivers:last-child {
   border-bottom: none;
 }
