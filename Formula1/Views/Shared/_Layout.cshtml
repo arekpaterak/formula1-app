@@ -60,10 +60,9 @@
                                             asp-action="Index">Users</a>
                                     </li>
                                 }
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Account"
-                                        asp-action="Logout">Logout</a>
-                                </li>
+                                
+
+                                
                             }
                             else
                             {
@@ -74,7 +73,15 @@
                                 
                             }
                         }
+                        
                     </ul>
+                    @if (Context.Session.GetString("IsLoggedIn") == "true"){
+                            <form asp-action="Logout" method="post">
+                                <div align="center">
+                                    <button type="submit" class="btn btn-primary">Logout</button>
+                                </div>
+                            </form>
+                        }
                 </div>
             </div>
         </nav>
