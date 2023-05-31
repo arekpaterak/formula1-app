@@ -29,6 +29,13 @@ public class AccountController : Controller
         // Pobranie danych z formularza
         string username = form["username"];
         string password = form["password"];
+        
+        HttpContext.Session.SetString("IsAdmin", "false");
+
+        if(username == "admin")
+        {
+            HttpContext.Session.SetString("IsAdmin", "true");
+        }
 
         var connectionStringBuilder = new SqliteConnectionStringBuilder();
         connectionStringBuilder.DataSource = "./app.db";
@@ -63,7 +70,9 @@ public class AccountController : Controller
             }
 
             reader.Close();
-
+            
+           
+            
             HttpContext.Session.SetString("IsLoggedIn", "true");
 
             return RedirectToAction("LoggedIn");

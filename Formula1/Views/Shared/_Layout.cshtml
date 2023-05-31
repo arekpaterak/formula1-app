@@ -35,13 +35,34 @@
                         <a class="nav-link text-dark" asp-area="" asp-controller="Account"
                         asp-action="Data">Dane</a>
                         </li> *@
+                                <li>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Race"
+                                        asp-action="Index">Races</a>
+                                </li>
+                                <li>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Driver"
+                                        asp-action="Index">Drivers</a>
+                                </li>
+                                <li>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Team"
+                                        asp-action="Index">Teams</a>
+                                </li>
+
+                                @* Standings *@
+                                @* <li>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Standings"
+                                        asp-action="Index">Standings</a>
+                                </li> *@
+                                @if (Context.Session.GetString("IsAdmin") == "true")
+                                {
+                                    <li>
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="User"
+                                            asp-action="Index">Users</a>
+                                    </li>
+                                }
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" asp-area="" asp-controller="Account"
                                         asp-action="Logout">Logout</a>
-                                </li>
-                                <li>
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Drivers"
-                                        asp-action="Drivers">Drivers</a>
                                 </li>
                             }
                             else
