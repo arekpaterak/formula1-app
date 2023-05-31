@@ -20,12 +20,12 @@ namespace Formula1.Models
         // [Display(Name = "Country")]
         public string Country { get; set; }
 
-        // [Display(Name = "Latitude")]
-        [DisplayFormat(NullDisplayText = "Unknown")]
-        public string Latitude { get; set; }
+        // // [Display(Name = "Latitude")]
+        // [DisplayFormat(NullDisplayText = "Unknown")]
+        // public string Latitude { get; set; }
 
-        // [Display(Name = "Longitude")]
-        [DisplayFormat(NullDisplayText = "Unknown")]
-        public string Longitude { get; set; }
+        // // [Display(Name = "Longitude")]
+        // [DisplayFormat(NullDisplayText = "Unknown")]
+        // public string Longitude { get; set; }
     }
 }

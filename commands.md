@@ -11,3 +11,5 @@ Update bazy danych dokonuje się poleceniem:
 ```
 dotnet ef database update
 ```
+
+dotnet aspnet-codegenerator controller -name UserController -m UserModel -dc Formula1.Data.Formula1Context --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries

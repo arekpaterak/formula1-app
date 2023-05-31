@@ -14,5 +14,9 @@ namespace Formula1.Models
 
         [Display(Name = "Nationality")]
         public string Nationality { get; set; }
+
+        [Display(Name = "Wikipedia page")]
+        [DisplayFormat(NullDisplayText = "Unknown")]
+        public string Url { get; set; }
     }
 }

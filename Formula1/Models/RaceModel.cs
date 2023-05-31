@@ -21,5 +21,9 @@ namespace Formula1.Models
 
         [DataType(DataType.Date)]
         public string Date { get; set; }
+
+        [Display(Name = "Wikipedia page")]
+        [DisplayFormat(NullDisplayText = "Unknown")]
+        public string Url { get; set; }
     }
 }

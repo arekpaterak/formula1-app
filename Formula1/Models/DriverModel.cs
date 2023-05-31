@@ -8,6 +8,8 @@ namespace Formula1.Models
         [Display(Name = "ID")]
         public int DriverId { get; set; }
 
+        public string Number { get; set; }
+
         [Required]
         [Display(Name = "First name")]
         public string Forename { get; set; }
@@ -28,5 +30,9 @@ namespace Formula1.Models
         [Display(Name = "Nationality")]
         [DisplayFormat(NullDisplayText = "Unknown")]
         public string Nationality { get; set; }
+
+        [Display(Name = "Wikipedia page")]
+        [DisplayFormat(NullDisplayText = "Unknown")]
+        public string Url { get; set; }
     }
 }
