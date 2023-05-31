@@ -24,3 +24,32 @@ body {
   width: 50px;
   height: 50px;
 }
+
+
+/* Drivers */
+
+.headerDriver {
+  padding: 20px;
+  text-align: center;
+  font-size: 35px;
+  color: black;
+  font-weight: bold;
+  border-radius: 10px;
+  border: 2px solid black;
+  margin-bottom: 20px;
+}
+
+.ulDrivers {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.liDrivers {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.liDrivers:last-child {
+  border-bottom: none;
+}
