@@ -1,5 +1,5 @@
 .vscode
 Formula1/bin
 Formula1/obj
-*.db
-
+Formula1/Migrations
+*.db*
