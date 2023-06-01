@@ -22,7 +22,7 @@ namespace Formula1.Models
         [Display(Name = "3-letter alphabet code of driver")]
         public string Code { get; set; }
 
-        [Display(Name = "Date of birth")]
+        [Display(Name = "Date of Birth")]
         [DisplayFormat(NullDisplayText = "Unknown")]
         [DataType(DataType.Date)]
         public string DateOfBirth { get; set; }

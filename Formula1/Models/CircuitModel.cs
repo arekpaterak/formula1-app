@@ -27,5 +27,9 @@ namespace Formula1.Models
         // // [Display(Name = "Longitude")]
         // [DisplayFormat(NullDisplayText = "Unknown")]
         // public string Longitude { get; set; }
+
+        [Display(Name = "Wikipedia page")]
+        [DisplayFormat(NullDisplayText = "Unknown")]
+        public string Url { get; set; }
     }
 }

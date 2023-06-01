@@ -14,6 +14,7 @@ namespace Formula1.Models
         [Required]
         public int Round { get; set; }
 
+        [Display(Name = "Circuit")]
         public CircuitModel? Circuit { get; set; }
 
         [Required]

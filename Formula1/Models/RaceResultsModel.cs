@@ -22,12 +22,15 @@ namespace Formula1.Models
         public int Number { get; set; }
 
         [Required]
-        int Grid { get; set; }
+        public int Grid { get; set; }
 
-        string Position { get; set; }
+        // [Display(Name = "Position")]
+        // public string Position { get; set; }
 
-        int PositionOrder { get; set; }
+        [Display(Name = "Position")]
+        public int PositionOrder { get; set; }
 
-        int Points { get; set; }
+        [Display(Name = "Points")]
+        public int Points { get; set; }
     }
 }
