@@ -12,9 +12,9 @@
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Year)
-            </th>
+            @* <th>
+            @Html.DisplayNameFor(model => model.Year)
+            </th> *@
             <th>
                 @Html.DisplayNameFor(model => model.Round)
             </th>
@@ -31,29 +31,30 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Year)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Round)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Url)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.RaceId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.RaceId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.RaceId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                @* <td>
+            @Html.DisplayFor(modelItem => item.Year)
+            </td> *@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Round)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Url)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.RaceId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.RaceId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.RaceId">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

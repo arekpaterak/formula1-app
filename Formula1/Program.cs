@@ -16,40 +16,40 @@ foreach (byte b in hashedPasswordBytes)
     hashedPassword += b.ToString("X2");
 }
 
-var connectionStringBuilder = new SqliteConnectionStringBuilder();
-connectionStringBuilder.DataSource = "./app.db";
-using (var connection = new SqliteConnection(connectionStringBuilder.ConnectionString))
-{
-    connection.Open();
+// var connectionStringBuilder = new SqliteConnectionStringBuilder();
+// connectionStringBuilder.DataSource = "./app.db";
+// using (var connection = new SqliteConnection(connectionStringBuilder.ConnectionString))
+// {
+//     connection.Open();
 
-    SqliteCommand command = connection.CreateCommand();
+//     SqliteCommand command = connection.CreateCommand();
 
-    command.CommandText = "DROP TABLE IF EXISTS logins;";
-    command.ExecuteNonQuery();
+//     command.CommandText = "DROP TABLE IF EXISTS logins;";
+//     command.ExecuteNonQuery();
 
-    // command.CommandText = "DROP TABLE IF EXISTS data;";
-    // command.ExecuteNonQuery();
+//     // command.CommandText = "DROP TABLE IF EXISTS data;";
+//     // command.ExecuteNonQuery();
 
-    command.CommandText = "CREATE TABLE logins (\n" +
-        "    login TEXT PRIMARY KEY,\n" +
-        "    password TEXT NOT NULL\n" +
-        ");";
-    command.ExecuteNonQuery();
+//     command.CommandText = "CREATE TABLE logins (\n" +
+//         "    login TEXT PRIMARY KEY,\n" +
+//         "    password TEXT NOT NULL\n" +
+//         ");";
+//     command.ExecuteNonQuery();
 
-    // command.CommandText = "CREATE TABLE data (\n" +
-    //     "    id INTEGER PRIMARY KEY,\n" +
-    //     "    data TEXT NOT NULL\n" +
-    //     ");";
-    // command.ExecuteNonQuery();
+//     // command.CommandText = "CREATE TABLE data (\n" +
+//     //     "    id INTEGER PRIMARY KEY,\n" +
+//     //     "    data TEXT NOT NULL\n" +
+//     //     ");";
+//     // command.ExecuteNonQuery();
 
-    command.CommandText = $"INSERT INTO logins (login, password) VALUES ('admin', '{hashedPassword}');";
-    command.ExecuteNonQuery();
+//     command.CommandText = $"INSERT INTO logins (login, password) VALUES ('admin', '{hashedPassword}');";
+//     command.ExecuteNonQuery();
 
-    // command.CommandText = "INSERT INTO data (data) VALUES ('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nunc sed ultricies ultricies, diam nisl ultricies nisl, vitae ultricies nisl nisl eget nisl.'), ('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nunc sed ultricies ultricies, diam nisl ultricies nisl, vitae ultricies nisl nisl eget nisl.');";
-    // command.ExecuteNonQuery();
+//     // command.CommandText = "INSERT INTO data (data) VALUES ('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nunc sed ultricies ultricies, diam nisl ultricies nisl, vitae ultricies nisl nisl eget nisl.'), ('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nunc sed ultricies ultricies, diam nisl ultricies nisl, vitae ultricies nisl nisl eget nisl.');";
+//     // command.ExecuteNonQuery();
 
-    connection.Close();
-}
+//     connection.Close();
+// }
 
 (List<List<string>>, string[]) ReadCSV(string filename, char separator)
 {

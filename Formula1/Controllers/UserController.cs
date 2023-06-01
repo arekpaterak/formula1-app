@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Formula1.Data;
 using Formula1.Models;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace Formula1.Controllers
 {
@@ -26,9 +28,9 @@ namespace Formula1.Controllers
             {
                 return RedirectToAction("Account", "Login");
             }
-              return _context.UserModel != null ? 
-                          View(await _context.UserModel.ToListAsync()) :
-                          Problem("Entity set 'Formula1Context.UserModel'  is null.");
+            return _context.UserModel != null ?
+                        View(await _context.UserModel.ToListAsync()) :
+                        Problem("Entity set 'Formula1Context.UserModel'  is null.");
         }
 
         // GET: User/Details/5
@@ -45,6 +47,28 @@ namespace Formula1.Controllers
 
             var userModel = await _context.UserModel
                 .FirstOrDefaultAsync(m => m.Id == id);
+            if (userModel == null)
+            {
+                return NotFound();
+            }
+
+            return View(userModel);
+        }
+
+        // GET: User/Details/5
+        public async Task<IActionResult> Details(string? username)
+        {
+            if (!(HttpContext.Session.GetString("IsLoggedIn") == "true"))
+            {
+                return RedirectToAction("Account", "Login");
+            }
+            if (username == null || _context.UserModel == null)
+            {
+                return NotFound();
+            }
+
+            var userModel = await _context.UserModel
+                .FirstOrDefaultAsync(m => m.Username == username);
             if (userModel == null)
             {
                 return NotFound();
@@ -76,6 +100,17 @@ namespace Formula1.Controllers
             }
             if (ModelState.IsValid)
             {
+                HashAlgorithm hashAlgorithm = MD5.Create();
+                byte[] passwordBytes = Encoding.UTF8.GetBytes(userModel.Password);
+                byte[] hashedPasswordBytes = hashAlgorithm.ComputeHash(passwordBytes);
+                string hashedPassword = "";
+                foreach (byte b in hashedPasswordBytes)
+                {
+                    hashedPassword += b.ToString("X2");
+                }
+
+                userModel.Password = hashedPassword;
+
                 _context.Add(userModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -123,6 +158,17 @@ namespace Formula1.Controllers
             {
                 try
                 {
+                    HashAlgorithm hashAlgorithm = MD5.Create();
+                    byte[] passwordBytes = Encoding.UTF8.GetBytes(userModel.Password);
+                    byte[] hashedPasswordBytes = hashAlgorithm.ComputeHash(passwordBytes);
+                    string hashedPassword = "";
+                    foreach (byte b in hashedPasswordBytes)
+                    {
+                        hashedPassword += b.ToString("X2");
+                    }
+
+                    userModel.Password = hashedPassword;
+
                     _context.Update(userModel);
                     await _context.SaveChangesAsync();
                 }
@@ -182,14 +228,14 @@ namespace Formula1.Controllers
             {
                 _context.UserModel.Remove(userModel);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool UserModelExists(int id)
         {
-          return (_context.UserModel?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.UserModel?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }
