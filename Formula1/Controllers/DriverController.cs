@@ -56,7 +56,7 @@ namespace Formula1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("DriverId,Forename,Surname,Code,DateOfBirth,Nationality")] DriverModel driverModel)
+        public async Task<IActionResult> Create([Bind("DriverId,Number,Code,FirstName,LastName,DateOfBirth,Nationality,Url")] DriverModel driverModel)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +88,7 @@ namespace Formula1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("DriverId,Forename,Surname,Code,DateOfBirth,Nationality")] DriverModel driverModel)
+        public async Task<IActionResult> Edit(int id, [Bind("DriverId,Number,Code,FirstName,LastName,DateOfBirth,Nationality,Url")] DriverModel driverModel)
         {
             if (id != driverModel.DriverId)
             {

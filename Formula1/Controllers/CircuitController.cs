@@ -56,7 +56,7 @@ namespace Formula1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CircuitId,Name,City,Country")] CircuitModel circuitModel)
+        public async Task<IActionResult> Create([Bind("CircuitId,Name,City,Country,Url")] CircuitModel circuitModel)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +88,7 @@ namespace Formula1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CircuitId,Name,City,Country")] CircuitModel circuitModel)
+        public async Task<IActionResult> Edit(int id, [Bind("CircuitId,Name,City,Country,Url")] CircuitModel circuitModel)
         {
             if (id != circuitModel.CircuitId)
             {

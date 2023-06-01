@@ -13,7 +13,25 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Number)
+                @Html.DisplayNameFor(model => model.Position)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartingGrid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Laps)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FastestLapTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Points)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SetFastestLap)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FastestLap)
             </th>
             <th></th>
         </tr>
@@ -22,7 +40,25 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Number)
+                @Html.DisplayFor(modelItem => item.Position)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartingGrid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Laps)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FastestLapTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Points)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SetFastestLap)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FastestLap)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.ResultId">Edit</a> |

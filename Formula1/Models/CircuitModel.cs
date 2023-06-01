@@ -9,27 +9,20 @@ namespace Formula1.Models
         public int CircuitId { get; set; }
 
         [Required]
-        // [Display(Name = "Name")]
-        public string Name { get; set; }
+        [Display(Name = "Name")]
+        public string? Name { get; set; }
 
         [Required]
-        // [Display(Name = "City")]
-        public string City { get; set; }
+        [Display(Name = "City")]
+        public string? City { get; set; }
 
         [Required]
-        // [Display(Name = "Country")]
-        public string Country { get; set; }
+        [Display(Name = "Country")]
+        public string? Country { get; set; }
 
-        // // [Display(Name = "Latitude")]
-        // [DisplayFormat(NullDisplayText = "Unknown")]
-        // public string Latitude { get; set; }
-
-        // // [Display(Name = "Longitude")]
-        // [DisplayFormat(NullDisplayText = "Unknown")]
-        // public string Longitude { get; set; }
-
+        [Required]
         [Display(Name = "Wikipedia page")]
         [DisplayFormat(NullDisplayText = "Unknown")]
-        public string Url { get; set; }
+        public string? Url { get; set; }
     }
 }

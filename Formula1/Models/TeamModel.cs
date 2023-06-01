@@ -9,14 +9,15 @@ namespace Formula1.Models
         public int TeamId { get; set; }
 
         [Required]
-        [Display(Name = "Team name")]
-        public string Name { get; set; }
+        [Display(Name = "Team Name")]
+        public string? Name { get; set; }
 
+        [Required]
         [Display(Name = "Nationality")]
-        public string Nationality { get; set; }
+        public string? Nationality { get; set; }
 
-        [Display(Name = "Wikipedia page")]
+        [Display(Name = "Wikipedia Page")]
         [DisplayFormat(NullDisplayText = "Unknown")]
-        public string Url { get; set; }
+        public string? Url { get; set; }
     }
 }

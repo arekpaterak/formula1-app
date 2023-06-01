@@ -14,17 +14,19 @@ namespace Formula1.Models
         [Required]
         public int Round { get; set; }
 
+        [Required]
         [Display(Name = "Circuit")]
         public CircuitModel? Circuit { get; set; }
 
         [Required]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
+        [Required]
         [DataType(DataType.Date)]
-        public string Date { get; set; }
+        public string? Date { get; set; }
 
-        [Display(Name = "Wikipedia page")]
+        [Display(Name = "Wikipedia Page")]
         [DisplayFormat(NullDisplayText = "Unknown")]
-        public string Url { get; set; }
+        public string? Url { get; set; }
     }
 }
