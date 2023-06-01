@@ -30,9 +30,8 @@ namespace Formula1.Models
         public int Laps { get; set; }
 
         [Required]
-        [DataType(DataType.Time)]
         [Display(Name = "Time/Retired")]
-        public string? FastestLapTime { get; set; }
+        public string? Time { get; set; }
 
         [Required]
         [Display(Name = "Points")]
@@ -46,6 +45,6 @@ namespace Formula1.Models
         public string? SetFastestLap { get; set; }
 
         [Display(Name = "Fastest Lap Time")]
-        public string? FastestLap { get; set; }
+        public string? FastestLapTime { get; set; }
     }
 }

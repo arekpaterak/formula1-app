@@ -1,19 +1,22 @@
 @{
-    var images = new List<string> { "~/image/8961759.jpg", "~/image/8961770.jpg", "~/image/8961807.jpg", "~/image/8961858.jpg" };
+    var images = new List<string> { "~/image/8961759.jpg", "~/image/8961770.jpg", "~/image/8961807.jpg",
+"~/image/8961858.jpg" };
 }
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <title>Slider</title>
-    
+
     <style>
         #slider {
-        max-width: 600px;
-        margin: 0 auto;
-        text-align: center; 
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
         }
+
         .slider-image {
             display: none;
             max-width: 100%;
@@ -23,8 +26,8 @@
             border-radius: 10px;
             box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
         }
-    </style>    
-    
+    </style>
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function () {
@@ -42,10 +45,13 @@
         });
     </script>
 </head>
+
 <body>
     <div class="home-container">
-        <h1 class="standings-header">Formuła 1</h1>
-        <p class="home-text">Formula 1 is the premier class of car racing where the best drivers and teams compete worldwide. <br> The 2023 Formula 1 season is currently underway, featuring many thrilling races on various circuits</p>
+        <h1 class="standings-header">Formula 1</h1>
+        <p class="home-text">Formula 1 is the premier class of car racing where the best drivers and teams compete
+            worldwide. <br> The 2023 Formula 1 season is currently underway, featuring many thrilling races on various
+            circuits</p>
         <div id="slider">
             @foreach (var image in images)
             {
@@ -54,4 +60,5 @@
         </div>
     </div>
 </body>
+
 </html>

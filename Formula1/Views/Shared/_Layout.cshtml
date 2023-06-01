@@ -17,7 +17,7 @@
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
                     <img class="navbar-brand-img" src="~/image/racing-car.png" />
-                    
+
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,16 +36,14 @@
                         asp-action="Data">Dane</a>
                         </li> *@
                                 <li>
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Race"
-                                        asp-action="Index">Races</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Race" asp-action="Index">Races</a>
                                 </li>
                                 <li>
                                     <a class="nav-link text-dark" asp-area="" asp-controller="Driver"
                                         asp-action="Index">Drivers</a>
                                 </li>
                                 <li>
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Team"
-                                        asp-action="Index">Teams</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Team" asp-action="Index">Teams</a>
                                 </li>
 
                                 @* Standings *@
@@ -54,14 +52,13 @@
                                         asp-action="Index">Standings</a>
                                 </li>
                                 @* <li>
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="RaceResults"
-                                        asp-action="Index">RaceResults</a>
-                                </li> *@
+                        <a class="nav-link text-dark" asp-area="" asp-controller="RaceResults"
+                        asp-action="Index">RaceResults</a>
+                        </li> *@
                                 @if (Context.Session.GetString("IsAdmin") == "true")
                                 {
                                     <li>
-                                        <a class="nav-link text-dark" asp-area="" asp-controller="User"
-                                            asp-action="Index">Users</a>
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Index">Users</a>
                                     </li>
                                 }
                             }
@@ -71,18 +68,19 @@
                                     <a class="nav-link text-dark" asp-area="" asp-controller="Account"
                                         asp-action="Login">Login</a>
                                 </li>
-                                
+
                             }
                         }
-                        
+
                     </ul>
-                    @if (Context.Session.GetString("IsLoggedIn") == "true"){
-                            <form asp-action="Logout" method="post">
-                                <div align="center">
-                                    <button type="submit" class="btn btn-primary">Logout</button>
-                                </div>
-                            </form>
-                        }
+                    @if (Context.Session.GetString("IsLoggedIn") == "true")
+                    {
+                        <form asp-action="Logout" method="post">
+                            <div align="center">
+                                <button type="submit" class="btn btn-primary">Log out</button>
+                            </div>
+                        </form>
+                    }
                 </div>
             </div>
         </nav>

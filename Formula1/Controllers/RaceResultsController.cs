@@ -68,7 +68,7 @@ namespace Formula1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ResultId,Position,StartingGrid,Laps,FastestLapTime,Points,Sprint,SetFastestLap,FastestLap")] RaceResultsModel raceResultsModel)
+        public async Task<IActionResult> Create([Bind("ResultId,Position,StartingGrid,Laps,Time,Points,Sprint,SetFastestLap,FastestLapTime")] RaceResultsModel raceResultsModel)
         {
             if (!(HttpContext.Session.GetString("IsLoggedIn") == "true"))
             {
@@ -108,7 +108,7 @@ namespace Formula1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ResultId,Position,StartingGrid,Laps,FastestLapTime,Points,Sprint,SetFastestLap,FastestLap")] RaceResultsModel raceResultsModel)
+        public async Task<IActionResult> Edit(int id, [Bind("ResultId,Position,StartingGrid,Laps,Time,Points,Sprint,SetFastestLap,FastestLapTime")] RaceResultsModel raceResultsModel)
         {
             if (!(HttpContext.Session.GetString("IsLoggedIn") == "true"))
             {

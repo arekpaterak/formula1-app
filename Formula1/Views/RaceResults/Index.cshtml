@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1 class="standings-header">Race Resoults</h1>
+<h1>Index</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -22,7 +22,7 @@
                 @Html.DisplayNameFor(model => model.Laps)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FastestLapTime)
+                @Html.DisplayNameFor(model => model.Time)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Points)
@@ -34,7 +34,7 @@
                 @Html.DisplayNameFor(model => model.SetFastestLap)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FastestLap)
+                @Html.DisplayNameFor(model => model.FastestLapTime)
             </th>
             <th></th>
         </tr>
@@ -52,7 +52,7 @@
                 @Html.DisplayFor(modelItem => item.Laps)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FastestLapTime)
+                @Html.DisplayFor(modelItem => item.Time)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Points)
@@ -64,7 +64,7 @@
                 @Html.DisplayFor(modelItem => item.SetFastestLap)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FastestLap)
+                @Html.DisplayFor(modelItem => item.FastestLapTime)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.ResultId">Edit</a> |
