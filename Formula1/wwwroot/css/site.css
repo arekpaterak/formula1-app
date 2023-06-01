@@ -9,7 +9,15 @@ html {
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #d80202;
+}
+.btn-primary {
+  background-color: #d80202;
+  border-color: #d80202;
+}
+.btn-primary:hover {
+  background-color: #da4040;
+  border-color: #da4040;
 }
 
 html {
@@ -52,4 +60,39 @@ body {
 
 .tdDrivers:last-child {
   border-bottom: none;
+}
+
+/* Standings */
+
+.standings-buttons {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.standings-buttons a {
+  flex: 1;
+}
+
+.standings-buttons a.active {
+  background-color: #258cfb;
+  color: white;
+}
+
+.standings-buttons a:hover {
+  background-color: #da4040;
+  color: white;
+}
+
+.standings-header{
+  padding: 20px;
+  text-align: center;
+  font-size: 35px;
+  color: black;
+  font-weight: bold;
+  border-radius: 10px;
+  border: 2px solid black;
+  margin-bottom: 20px;
 }
