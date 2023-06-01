@@ -25,9 +25,21 @@ html {
   min-height: 100%;
 }
 
-body {
+/* body {
   margin-bottom: 60px;
+} */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
+div.container {
+  flex: 1;
+}
+footer {
+  margin-top: auto;
+}
+
 .navbar-brand-img{
   width: 50px;
   height: 50px;
@@ -95,4 +107,38 @@ body {
   border-radius: 10px;
   border: 2px solid black;
   margin-bottom: 20px;
+}
+
+.standings-header-smaller {
+  text-align: center;
+  font-size: 25px;
+  color: black;
+  font-weight: bold;
+  border-radius: 10px;
+  border: 2px solid black;
+  margin-bottom: 20px;
+  width: 50%;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+
+
+/* Home */
+
+.home-container{
+
+  text-align: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.home-text{
+  font-size: 20px;
+  color: black;
+  text-shadow: 0px 0px 0.5px #000000;
+  margin-bottom: 40px;
 }
