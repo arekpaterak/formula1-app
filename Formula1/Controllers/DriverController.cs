@@ -22,7 +22,11 @@ namespace Formula1.Controllers
         // GET: Driver
         public async Task<IActionResult> Index()
         {
-              return _context.DriverModel != null ? 
+            if (!(HttpContext.Session.GetString("IsLoggedIn") == "true"))
+            {
+                return RedirectToAction("Account", "Login");
+            }
+            return _context.DriverModel != null ? 
                           View(await _context.DriverModel.ToListAsync()) :
                           Problem("Entity set 'Formula1Context.DriverModel'  is null.");
         }
@@ -48,6 +52,10 @@ namespace Formula1.Controllers
         // GET: Driver/Create
         public IActionResult Create()
         {
+            if (!(HttpContext.Session.GetString("IsLoggedIn") == "true"))
+            {
+                return RedirectToAction("Account", "Login");
+            }
             return View();
         }
 
@@ -70,6 +78,11 @@ namespace Formula1.Controllers
         // GET: Driver/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            if (!(HttpContext.Session.GetString("IsLoggedIn") == "true"))
+            {
+                return RedirectToAction("Account", "Login");
+            }
+            
             if (id == null || _context.DriverModel == null)
             {
                 return NotFound();
@@ -90,6 +103,10 @@ namespace Formula1.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("DriverId,Number,Code,FirstName,LastName,DateOfBirth,Nationality,Url")] DriverModel driverModel)
         {
+            if (!(HttpContext.Session.GetString("IsLoggedIn") == "true"))
+            {
+                return RedirectToAction("Account", "Login");
+            }
             if (id != driverModel.DriverId)
             {
                 return NotFound();
@@ -121,6 +138,10 @@ namespace Formula1.Controllers
         // GET: Driver/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            if (!(HttpContext.Session.GetString("IsLoggedIn") == "true"))
+            {
+                return RedirectToAction("Account", "Login");
+            }
             if (id == null || _context.DriverModel == null)
             {
                 return NotFound();

@@ -22,6 +22,10 @@ namespace Formula1.Controllers
         // GET: Team
         public async Task<IActionResult> Index()
         {
+            if (!(HttpContext.Session.GetString("IsLoggedIn") == "true"))
+            {
+                return RedirectToAction("Account", "Login");
+            }
               return _context.TeamModel != null ? 
                           View(await _context.TeamModel.ToListAsync()) :
                           Problem("Entity set 'Formula1Context.TeamModel'  is null.");
@@ -30,6 +34,10 @@ namespace Formula1.Controllers
         // GET: Team/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            if (!(HttpContext.Session.GetString("IsLoggedIn") == "true"))
+            {
+                return RedirectToAction("Account", "Login");
+            }
             if (id == null || _context.TeamModel == null)
             {
                 return NotFound();
@@ -48,6 +56,10 @@ namespace Formula1.Controllers
         // GET: Team/Create
         public IActionResult Create()
         {
+            if (!(HttpContext.Session.GetString("IsLoggedIn") == "true"))
+            {
+                return RedirectToAction("Account", "Login");
+            }
             return View();
         }
 
@@ -58,6 +70,10 @@ namespace Formula1.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("TeamId,Name,Nationality,Url")] TeamModel teamModel)
         {
+            if (!(HttpContext.Session.GetString("IsLoggedIn") == "true"))
+            {
+                return RedirectToAction("Account", "Login");
+            }
             if (ModelState.IsValid)
             {
                 _context.Add(teamModel);
@@ -70,6 +86,10 @@ namespace Formula1.Controllers
         // GET: Team/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            if (!(HttpContext.Session.GetString("IsLoggedIn") == "true"))
+            {
+                return RedirectToAction("Account", "Login");
+            }
             if (id == null || _context.TeamModel == null)
             {
                 return NotFound();
@@ -90,6 +110,10 @@ namespace Formula1.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("TeamId,Name,Nationality,Url")] TeamModel teamModel)
         {
+            if (!(HttpContext.Session.GetString("IsLoggedIn") == "true"))
+            {
+                return RedirectToAction("Account", "Login");
+            }
             if (id != teamModel.TeamId)
             {
                 return NotFound();
@@ -121,6 +145,10 @@ namespace Formula1.Controllers
         // GET: Team/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            if (!(HttpContext.Session.GetString("IsLoggedIn") == "true"))
+            {
+                return RedirectToAction("Account", "Login");
+            }
             if (id == null || _context.TeamModel == null)
             {
                 return NotFound();
@@ -141,6 +169,10 @@ namespace Formula1.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            if (!(HttpContext.Session.GetString("IsLoggedIn") == "true"))
+            {
+                return RedirectToAction("Account", "Login");
+            }
             if (_context.TeamModel == null)
             {
                 return Problem("Entity set 'Formula1Context.TeamModel'  is null.");

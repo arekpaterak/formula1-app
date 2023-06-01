@@ -22,6 +22,10 @@ namespace Formula1.Controllers
         // GET: Race
         public async Task<IActionResult> Index()
         {
+            if (!(HttpContext.Session.GetString("IsLoggedIn") == "true"))
+            {
+                return RedirectToAction("Account", "Login");
+            }
               return _context.RaceModel != null ? 
                           View(await _context.RaceModel.ToListAsync()) :
                           Problem("Entity set 'Formula1Context.RaceModel'  is null.");
@@ -30,6 +34,10 @@ namespace Formula1.Controllers
         // GET: Race/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            if (!(HttpContext.Session.GetString("IsLoggedIn") == "true"))
+            {
+                return RedirectToAction("Account", "Login");
+            }
             if (id == null || _context.RaceModel == null)
             {
                 return NotFound();
@@ -48,6 +56,10 @@ namespace Formula1.Controllers
         // GET: Race/Create
         public IActionResult Create()
         {
+            if (!(HttpContext.Session.GetString("IsLoggedIn") == "true"))
+            {
+                return RedirectToAction("Account", "Login");
+            }
             return View();
         }
 
@@ -58,6 +70,10 @@ namespace Formula1.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("RaceId,Year,Round,Name,Date,Url")] RaceModel raceModel)
         {
+            if (!(HttpContext.Session.GetString("IsLoggedIn") == "true"))
+            {
+                return RedirectToAction("Account", "Login");
+            }
             if (ModelState.IsValid)
             {
                 _context.Add(raceModel);
@@ -70,6 +86,10 @@ namespace Formula1.Controllers
         // GET: Race/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            if (!(HttpContext.Session.GetString("IsLoggedIn") == "true"))
+            {
+                return RedirectToAction("Account", "Login");
+            }
             if (id == null || _context.RaceModel == null)
             {
                 return NotFound();
@@ -90,6 +110,10 @@ namespace Formula1.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("RaceId,Year,Round,Name,Date,Url")] RaceModel raceModel)
         {
+            if (!(HttpContext.Session.GetString("IsLoggedIn") == "true"))
+            {
+                return RedirectToAction("Account", "Login");
+            }
             if (id != raceModel.RaceId)
             {
                 return NotFound();
@@ -121,6 +145,10 @@ namespace Formula1.Controllers
         // GET: Race/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            if (!(HttpContext.Session.GetString("IsLoggedIn") == "true"))
+            {
+                return RedirectToAction("Account", "Login");
+            }
             if (id == null || _context.RaceModel == null)
             {
                 return NotFound();
@@ -141,6 +169,10 @@ namespace Formula1.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            if (!(HttpContext.Session.GetString("IsLoggedIn") == "true"))
+            {
+                return RedirectToAction("Account", "Login");
+            }
             if (_context.RaceModel == null)
             {
                 return Problem("Entity set 'Formula1Context.RaceModel'  is null.");

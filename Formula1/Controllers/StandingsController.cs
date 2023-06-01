@@ -22,14 +22,26 @@ namespace Formula1.Controllers
 
         public IActionResult Index()
         {
+            if (!(HttpContext.Session.GetString("IsLoggedIn") == "true"))
+            {
+                return RedirectToAction("Account", "Login");
+            }
             return View();
         }
 
         public IActionResult TeamsStanding(){
+            if (!(HttpContext.Session.GetString("IsLoggedIn") == "true"))
+            {
+                return RedirectToAction("Account", "Login");
+            }
             return View();
         }
 
         public IActionResult DriversStanding(){
+            if (!(HttpContext.Session.GetString("IsLoggedIn") == "true"))
+            {
+                return RedirectToAction("Account", "Login");
+            }
             return View();
         }
 

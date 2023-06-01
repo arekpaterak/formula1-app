@@ -22,6 +22,10 @@ namespace Formula1.Controllers
         // GET: Circuit
         public async Task<IActionResult> Index()
         {
+            if (!(HttpContext.Session.GetString("IsLoggedIn") == "true"))
+            {
+                return RedirectToAction("Account", "Login");
+            }
               return _context.CircuitModel != null ? 
                           View(await _context.CircuitModel.ToListAsync()) :
                           Problem("Entity set 'Formula1Context.CircuitModel'  is null.");
@@ -30,6 +34,10 @@ namespace Formula1.Controllers
         // GET: Circuit/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            if (!(HttpContext.Session.GetString("IsLoggedIn") == "true"))
+            {
+                return RedirectToAction("Account", "Login");
+            }
             if (id == null || _context.CircuitModel == null)
             {
                 return NotFound();
@@ -48,6 +56,10 @@ namespace Formula1.Controllers
         // GET: Circuit/Create
         public IActionResult Create()
         {
+            if (!(HttpContext.Session.GetString("IsLoggedIn") == "true"))
+            {
+                return RedirectToAction("Account", "Login");
+            }
             return View();
         }
 
@@ -58,6 +70,10 @@ namespace Formula1.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("CircuitId,Name,City,Country,Url")] CircuitModel circuitModel)
         {
+            if (!(HttpContext.Session.GetString("IsLoggedIn") == "true"))
+            {
+                return RedirectToAction("Account", "Login");
+            }
             if (ModelState.IsValid)
             {
                 _context.Add(circuitModel);
@@ -70,6 +86,10 @@ namespace Formula1.Controllers
         // GET: Circuit/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            if (!(HttpContext.Session.GetString("IsLoggedIn") == "true"))
+            {
+                return RedirectToAction("Account", "Login");
+            }
             if (id == null || _context.CircuitModel == null)
             {
                 return NotFound();
@@ -90,6 +110,10 @@ namespace Formula1.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("CircuitId,Name,City,Country,Url")] CircuitModel circuitModel)
         {
+            if (!(HttpContext.Session.GetString("IsLoggedIn") == "true"))
+            {
+                return RedirectToAction("Account", "Login");
+            }
             if (id != circuitModel.CircuitId)
             {
                 return NotFound();
@@ -121,6 +145,10 @@ namespace Formula1.Controllers
         // GET: Circuit/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            if (!(HttpContext.Session.GetString("IsLoggedIn") == "true"))
+            {
+                return RedirectToAction("Account", "Login");
+            }
             if (id == null || _context.CircuitModel == null)
             {
                 return NotFound();
@@ -141,6 +169,10 @@ namespace Formula1.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            if (!(HttpContext.Session.GetString("IsLoggedIn") == "true"))
+            {
+                return RedirectToAction("Account", "Login");
+            }
             if (_context.CircuitModel == null)
             {
                 return Problem("Entity set 'Formula1Context.CircuitModel'  is null.");
