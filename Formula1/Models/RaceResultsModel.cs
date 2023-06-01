@@ -39,10 +39,12 @@ namespace Formula1.Models
         public int Points { get; set; }
 
         [Required]
+        [Display(Name = "Sprint?")]
+        public bool Sprint { get; set; }
+
         [Display(Name = "Set Fastest Lap?")]
         public string? SetFastestLap { get; set; }
 
-        [Required]
         [Display(Name = "Fastest Lap Time")]
         public string? FastestLap { get; set; }
     }

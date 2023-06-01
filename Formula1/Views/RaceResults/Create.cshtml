@@ -37,6 +37,11 @@
                 <input asp-for="Points" class="form-control" />
                 <span asp-validation-for="Points" class="text-danger"></span>
             </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Sprint" /> @Html.DisplayNameFor(model => model.Sprint)
+                </label>
+            </div>
             <div class="form-group">
                 <label asp-for="SetFastestLap" class="control-label"></label>
                 <input asp-for="SetFastestLap" class="form-control" />
