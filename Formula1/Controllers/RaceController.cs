@@ -26,9 +26,35 @@ namespace Formula1.Controllers
             {
                 return RedirectToAction("Account", "Login");
             }
-              return _context.RaceModel != null ? 
+            return _context.RaceModel != null ? 
                           View(await _context.RaceModel.ToListAsync()) :
                           Problem("Entity set 'Formula1Context.RaceModel'  is null.");
+        }
+
+        // public async Task<IActionResult> RaceResults(){
+        //     var races = await _context.RaceModel.ToListAsync();
+            
+        //     var names = new List<string>();
+
+        //     foreach (var race in races){
+        //         names.Add(race.Name);
+        //     }
+
+        // }
+
+        public async Task<IActionResult> RaceResult(int? id){
+            var raceName = await _context.RaceModel
+                .FirstOrDefaultAsync(m => m.RaceId == id);
+            
+            ViewBag.RaceName = raceName.Name;
+            
+            var raceResoults = await _context.RaceResultsModel
+                .Where(m => m.Race.RaceId == id)
+                .ToListAsync();
+
+            ViewBag.raceResult = raceResoults;
+
+            return View("RaceResult");
         }
 
         // GET: Race/Details/5

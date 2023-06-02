@@ -43,7 +43,9 @@
                     @Html.DisplayFor(modelItem => item.Round)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Name)
+                    <a asp-action="RaceResult" asp-route-id="@item.RaceId">
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </a>    
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Date)
