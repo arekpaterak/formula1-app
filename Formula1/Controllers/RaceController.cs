@@ -26,14 +26,14 @@ namespace Formula1.Controllers
             {
                 return RedirectToAction("Account", "Login");
             }
-            return _context.RaceModel != null ? 
+            return _context.RaceModel != null ?
                           View(await _context.RaceModel.ToListAsync()) :
                           Problem("Entity set 'Formula1Context.RaceModel'  is null.");
         }
 
         // public async Task<IActionResult> RaceResults(){
         //     var races = await _context.RaceModel.ToListAsync();
-            
+
         //     var names = new List<string>();
 
         //     foreach (var race in races){
@@ -42,17 +42,18 @@ namespace Formula1.Controllers
 
         // }
 
-        public async Task<IActionResult> RaceResult(int? id){
+        public async Task<IActionResult> RaceResult(int? id)
+        {
             var raceName = await _context.RaceModel
                 .FirstOrDefaultAsync(m => m.RaceId == id);
-            
+
             ViewBag.RaceName = raceName.Name;
-            
-            var raceResoults = await _context.RaceResultsModel
+
+            var raceResults = await _context.RaceResultsModel
                 .Where(m => m.Race.RaceId == id)
                 .ToListAsync();
 
-            ViewBag.raceResult = raceResoults;
+            ViewBag.raceResult = raceResults;
 
             return View("RaceResult");
         }
@@ -208,14 +209,14 @@ namespace Formula1.Controllers
             {
                 _context.RaceModel.Remove(raceModel);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool RaceModelExists(int id)
         {
-          return (_context.RaceModel?.Any(e => e.RaceId == id)).GetValueOrDefault();
+            return (_context.RaceModel?.Any(e => e.RaceId == id)).GetValueOrDefault();
         }
     }
 }

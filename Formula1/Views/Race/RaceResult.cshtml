@@ -1,69 +1,72 @@
 <h1 class="standings-header">@ViewBag.RaceName Results</h1>
 
-
-@* <table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(@ViewBag.raceResult.Position)
-            </th>
-            <th>
-                @Html.DisplayNameFor(@ViewBag.raceResult.StartingGrid)
-            </th>
-            <th>
-                @Html.DisplayNameFor(@ViewBag.raceResult.Laps)
-            </th>
-            <th>
-                @Html.DisplayNameFor(@ViewBag.raceResult.Time)
-            </th>
-            <th>
-                @Html.DisplayNameFor(@ViewBag.raceResult.Points)
-            </th>
-            <th>
-                @Html.DisplayNameFor(@ViewBag.raceResult.Sprint)
-            </th>
-            <th>
-                @Html.DisplayNameFor(@ViewBag.raceResult.SetFastestLap)
-            </th>
-            <th>
-                @Html.DisplayNameFor(@ViewBag.raceResult.FastestLapTime)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
+<table class="table">
+    @* <thead>
+    <tr>
+    <th>
+    @Html.DisplayNameFor(@ViewBag.raceResult.Position)
+    </th>
+    <th>
+    @Html.DisplayNameFor(@ViewBag.raceResult.StartingGrid)
+    </th>
+    <th>
+    @Html.DisplayNameFor(@ViewBag.raceResult.Laps)
+    </th>
+    <th>
+    @Html.DisplayNameFor(@ViewBag.raceResult.Time)
+    </th>
+    <th>
+    @Html.DisplayNameFor(@ViewBag.raceResult.Points)
+    </th>
+    <th>
+    @Html.DisplayNameFor(@ViewBag.raceResult.Sprint)
+    </th>
+    <th>
+    @Html.DisplayNameFor(@ViewBag.raceResult.SetFastestLap)
+    </th>
+    <th>
+    @Html.DisplayNameFor(@ViewBag.raceResult.FastestLapTime)
+    </th>
+    <th></th>
+    </tr>
+    </thead> *@
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @item.Position
-            </td>
-            <td>
-                @item.StartingGrid
-            </td>
-            <td>
-                @item.Laps
-            </td>
-            <td>
-                @item.Time
-            </td>
-            <td>
-                @item.Points
-            </td>
-            <td>
-                @item.Sprint
-            </td>
-            <td>
-                @item.SetFastestLap
-            </td>
-            <td>
-                @item.FastestLapTime
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ResultId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ResultId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ResultId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in ViewBag.raceResult)
+        {
+            <tr>
+                @* <td>
+            @item.Driver.Name
+            </td> *@
+                <td>
+                    @item.Position
+                </td>
+                <td>
+                    @item.StartingGrid
+                </td>
+                <td>
+                    @item.Laps
+                </td>
+                <td>
+                    @item.Time
+                </td>
+                <td>
+                    @item.Points
+                </td>
+                <td>
+                    @item.Sprint
+                </td>
+                <td>
+                    @item.SetFastestLap
+                </td>
+                <td>
+                    @item.FastestLapTime
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ResultId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ResultId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ResultId">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
-</table> *@
+</table>

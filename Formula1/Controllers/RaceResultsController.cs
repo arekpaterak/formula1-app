@@ -26,10 +26,23 @@ namespace Formula1.Controllers
             {
                 return RedirectToAction("Account", "Login");
             }
-              return _context.RaceResultsModel != null ? 
-                          View(await _context.RaceResultsModel.ToListAsync()) :
-                          Problem("Entity set 'Formula1Context.RaceResultsModel'  is null.");
+            return _context.RaceResultsModel != null ?
+                        View(await _context.RaceResultsModel.ToListAsync()) :
+                        Problem("Entity set 'Formula1Context.RaceResultsModel'  is null.");
         }
+
+        // GET: RaceResults/
+        public async Task<IActionResult> Race(int? raceId)
+        {
+            if (!(HttpContext.Session.GetString("IsLoggedIn") == "true"))
+            {
+                return RedirectToAction("Account", "Login");
+            }
+            return _context.RaceResultsModel != null ?
+                        View(await _context.RaceResultsModel.Where(m => m.Race.RaceId == raceId).ToListAsync()) :
+                        Problem("Entity set 'Formula1Context.RaceResultsModel'  is null.");
+        }
+
 
         // GET: RaceResults/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -182,14 +195,14 @@ namespace Formula1.Controllers
             {
                 _context.RaceResultsModel.Remove(raceResultsModel);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool RaceResultsModelExists(int id)
         {
-          return (_context.RaceResultsModel?.Any(e => e.ResultId == id)).GetValueOrDefault();
+            return (_context.RaceResultsModel?.Any(e => e.ResultId == id)).GetValueOrDefault();
         }
     }
 }
