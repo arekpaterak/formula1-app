@@ -77,7 +77,7 @@ namespace Formula1.Controllers
             return RedirectToAction("LoggedIn");
 
             // var connectionStringBuilder = new SqliteConnectionStringBuilder();
-            // connectionStringBuilder.DataSource = "./Formula1Context-aa6fca60-45c1-4618-8d4c-1245ab05487b.db";
+            // connectionStringBuilder.DataSource = "./Formula1.db";
             // using (var connection = new SqliteConnection(connectionStringBuilder.ConnectionString))
             // {
             //     connection.Open();

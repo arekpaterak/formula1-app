@@ -79,7 +79,7 @@ foreach (byte b in hashedPasswordBytes)
 }
 
 var connectionStringBuilder2 = new SqliteConnectionStringBuilder();
-connectionStringBuilder2.DataSource = "./Formula1Context-aa6fca60-45c1-4618-8d4c-1245ab05487b.db";
+connectionStringBuilder2.DataSource = "./Formula1.db";
 using (var connection = new SqliteConnection(connectionStringBuilder2.ConnectionString))
 {
     connection.Open();
