@@ -55,6 +55,26 @@ namespace Formula1.Controllers
 
             ViewBag.raceResult = raceResults;
 
+            Dictionary<string, int> DriversName = new Dictionary<string, int>();
+
+            var drivers = await _context.DriverModel.ToListAsync();
+            var names = new List<string>();
+
+            foreach (var driver in drivers)
+            {
+                names.Add(driver.FirstName + " " + driver.LastName);
+            }
+
+            Dictionary<string, int> DriversNamesID = new Dictionary<string, int>();
+
+            foreach (var driver in drivers)
+            {
+                DriversNamesID.Add(driver.FirstName + " " + driver.LastName, driver.DriverId);
+            }
+
+            ViewBag.DriversNamesID = DriversNamesID;
+
+
             return View("RaceResult");
         }
 

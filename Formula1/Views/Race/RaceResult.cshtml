@@ -1,35 +1,21 @@
 <h1 class="standings-header">@ViewBag.RaceName Results</h1>
 
 <table class="table">
-    @* <thead>
-    <tr>
-    <th>
-    @Html.DisplayNameFor(@ViewBag.raceResult.Position)
-    </th>
-    <th>
-    @Html.DisplayNameFor(@ViewBag.raceResult.StartingGrid)
-    </th>
-    <th>
-    @Html.DisplayNameFor(@ViewBag.raceResult.Laps)
-    </th>
-    <th>
-    @Html.DisplayNameFor(@ViewBag.raceResult.Time)
-    </th>
-    <th>
-    @Html.DisplayNameFor(@ViewBag.raceResult.Points)
-    </th>
-    <th>
-    @Html.DisplayNameFor(@ViewBag.raceResult.Sprint)
-    </th>
-    <th>
-    @Html.DisplayNameFor(@ViewBag.raceResult.SetFastestLap)
-    </th>
-    <th>
-    @Html.DisplayNameFor(@ViewBag.raceResult.FastestLapTime)
-    </th>
-    <th></th>
-    </tr>
-    </thead> *@
+   <thead>
+        <tr>    
+            <th> Driver </th>
+            <th> Position </th>
+            <th> Starting Grid </th>
+            <th> Laps </th>
+            <th> Time </th>
+            <th> Points </th>
+            
+            <th> Sprint </th>
+            
+            <th> Set Fastest Lap </th>
+            <th> Fastest Lap Time </th>
+        </tr>
+   </thead>
     <tbody>
         @foreach (var item in ViewBag.raceResult)
         {
@@ -37,6 +23,13 @@
                 @* <td>
             @item.Driver.Name
             </td> *@
+                <td>
+                    @foreach (var driver in ViewBag.DriversNamesID){
+                        if (driver.Value == item.Driver.DriverId)
+                        {
+                            @driver.Key
+                        }
+                    }
                 <td>
                     @item.Position
                 </td>
@@ -62,9 +55,9 @@
                     @item.FastestLapTime
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.ResultId">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.ResultId">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.ResultId">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@item.ResultId" asp-controller="RaceResults">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ResultId" asp-controller="RaceResults">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ResultId" asp-controller="RaceResults">Delete</a>
                 </td>
             </tr>
         }
