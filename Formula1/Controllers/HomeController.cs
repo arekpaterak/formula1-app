@@ -20,7 +20,7 @@ public class HomeController : Controller
             return RedirectToAction("Account", "LoggedIn");
         }
 
-        return RedirectToAction("Account", "LoggedIn");
+        return View();
     }
 
     [HttpPost]
@@ -28,10 +28,10 @@ public class HomeController : Controller
     {
         if (!(HttpContext.Session.GetString("IsLoggedIn") == "true"))
         {
-            return RedirectToAction("Account", "LoggedIn");        
+            return RedirectToAction("Account", "LoggedIn");
         }
 
-        return RedirectToAction("Account", "LoggedIn");
+        return View();
     }
 
     public IActionResult Privacy()
