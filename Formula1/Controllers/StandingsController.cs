@@ -13,7 +13,7 @@ namespace Formula1.Controllers
 {
     public class StandingsController : Controller
     {
-        
+
         private readonly Formula1Context _context;
 
         public StandingsController(Formula1Context context)
@@ -30,7 +30,8 @@ namespace Formula1.Controllers
             return View();
         }
 
-        public IActionResult TeamsStanding(){
+        public IActionResult TeamsStanding()
+        {
             if (!(HttpContext.Session.GetString("IsLoggedIn") == "true"))
             {
                 return RedirectToAction("Account", "Login");
@@ -57,16 +58,17 @@ namespace Formula1.Controllers
             var sortedTeamPoints = teamPoints.OrderByDescending(t => t.Value).ToList();
 
             ViewBag.TeamPoints = sortedTeamPoints;
-            
+
             return View();
         }
 
-        public async Task<IActionResult> DriversStanding(){
+        public async Task<IActionResult> DriversStanding()
+        {
             if (!(HttpContext.Session.GetString("IsLoggedIn") == "true"))
             {
                 return RedirectToAction("Account", "Login");
-            }            
-            
+            }
+
             var raceResults = await _context.RaceResultsModel.Where(r => r.Position != "NC").ToListAsync();
 
             Dictionary<DriverModel, int> driverPoints = new Dictionary<DriverModel, int>();
@@ -82,27 +84,26 @@ namespace Formula1.Controllers
                 var driver = await _context.DriverModel.FirstOrDefaultAsync(d => d.DriverId == driverId);
                 var points = raceResult.Points;
                 driverPoints[driver] += points;
-                if (raceResult.SetFastestLap == "Yes"){
+                if (raceResult.SetFastestLap == "Yes")
+                {
                     driverPoints[driver] += 1;
                 }
             }
 
-            var sprintResults = await _context.RaceResultsModel.Where(r => r.Sprint == true).ToListAsync();
+            // var sprintResults = await _context.RaceResultsModel.Where(r => r.Sprint == true).ToListAsync();
 
-            foreach (var sprintResult in sprintResults)
-            {
-                var driverId = sprintResult.Driver.DriverId;
-                var driver = await _context.DriverModel.FirstOrDefaultAsync(d => d.DriverId == driverId);
-                var points = sprintResult.Points;
-                driverPoints[driver] += points;
-            }
+            // foreach (var sprintResult in sprintResults)
+            // {
+            //     var driverId = sprintResult.Driver.DriverId;
+            //     var driver = await _context.DriverModel.FirstOrDefaultAsync(d => d.DriverId == driverId);
+            //     var points = sprintResult.Points;
+            //     driverPoints[driver] += points;
+            // }
 
             var sortedDriverPoints = driverPoints.OrderByDescending(d => d.Value).ToList();
             ViewBag.DriverPoints = sortedDriverPoints;
-                    
+
             return View();
         }
-
-
     }
 }

@@ -4,10 +4,10 @@
     ViewData["Title"] = "Index";
 }
 
-<h1 class="standings-header">Circut</h1>
+<h1 class="standings-header">Circuts</h1>
 
 <div class="standings">
-    <div class="standings-buttons"> 
+    <div class="standings-buttons">
         <a asp-controller="Circuit" asp-action="Create" class="btn btn-primary btn-lg">Add Circuit</a>
     </div>
 </div>
@@ -30,26 +30,27 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.City)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Country)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Url)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.CircuitId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.CircuitId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.CircuitId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.City)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Country)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Url)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.CircuitId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.CircuitId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.CircuitId">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
