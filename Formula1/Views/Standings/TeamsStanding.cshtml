@@ -4,8 +4,24 @@
 <table class="table">
     <thead>
         <tr>
+            <th>Position</th>
             <th>Team</th>
             <th>Points</th>
+
         </tr>
     </thead>
+    <tbody>
+        @{
+            var index = 1;
+        }
+
+        @foreach (var team in ViewBag.TeamPoints){
+            <tr>
+                <td>@index</td>
+                <td>@team.Key.Name</td>
+                <td>@team.Value</td>
+            </tr>
+            index++;
+        }
+    </tbody>
 </table>

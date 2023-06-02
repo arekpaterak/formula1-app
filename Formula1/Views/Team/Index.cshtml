@@ -6,9 +6,11 @@
 
 <h1 class="standings-header">Teams</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+<div class="standings">
+    <div class="standings-buttons"> 
+        <a asp-controller="Team" asp-action="Create" class="btn btn-primary btn-lg">Add Team</a>
+    </div>
+</div>
 <table class="table">
     <thead>
         <tr>

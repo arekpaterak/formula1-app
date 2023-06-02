@@ -1,13 +1,28 @@
 <h1 class="standings-header">Drivers Standings</h1>
 
-
 <table class="table">
     <thead>
         <tr>
             <th>Position</th>
+            <th>Code</th>
             <th>Driver</th>
-            <th>Team</th>
             <th>Points</th>
         </tr>
     </thead>
+    <tbody>
+        @{
+            var index = 1;
+        }
+
+        @foreach (var driverPoint in ViewBag.DriverPoints)
+        {
+            <tr>
+                <td>@index</td>
+                <td>@driverPoint.Key.Code</td>
+                <td>@driverPoint.Key.FirstName @driverPoint.Key.LastName</td>
+                <td>@driverPoint.Value</td>
+            </tr>
+            index++;
+        }
+    </tbody>
 </table>

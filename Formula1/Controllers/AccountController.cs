@@ -65,7 +65,7 @@ namespace Formula1.Controllers
             {
                 hashedPassword += b.ToString("X2");
             }
-
+            Console.WriteLine(hashedPassword);
             if (hashedPassword != user.Password)
             {
                 ViewBag.ErrorMessage = "Incorrect password.";

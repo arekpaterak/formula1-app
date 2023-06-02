@@ -51,10 +51,13 @@
                                     <a class="nav-link text-dark" asp-area="" asp-controller="Standings"
                                         asp-action="Index">Standings</a>
                                 </li>
-                                @* <li>
-                        <a class="nav-link text-dark" asp-area="" asp-controller="RaceResults"
-                        asp-action="Index">RaceResults</a>
-                        </li> *@
+
+                                <li>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Circuit"
+                                        asp-action="Index">Circuits</a>
+                                </li>
+                                
+                                
                                 @if (Context.Session.GetString("IsAdmin") == "true")
                                 {
                                     <li>
@@ -78,6 +81,13 @@
                         <form asp-action="Logout" method="post">
                             <div align="center">
                                 <button type="submit" class="btn btn-primary">Log out</button>
+                            </div>
+                        </form>
+                    }
+                    else{
+                        <form asp-action="Index" method="post">
+                            <div align="center">
+                                <button type="submit" class="btn btn-primary">Log in</button>
                             </div>
                         </form>
                     }
