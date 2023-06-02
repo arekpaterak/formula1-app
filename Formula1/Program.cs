@@ -205,6 +205,301 @@ app.MapRazorPages();
 // Przekierowanie na stronę logowania, jeśli zasób nie istnieje
 app.UseStatusCodePagesWithReExecute("/Account/Login", "?statusCode={0}"); // Przekierowanie na stronę logowania, jeśli zasób nie istnieje
 
+
+// Endpoints
+//endpoint metody GET, przesyła listę wszystkich obiektów Informacja
+app.MapGet("/api/races", async (Formula1Context db) =>
+    await db.RaceModel.ToListAsync());
+
+//endpoint metody GET, przesyła listę wszystkich obiektów Informacja, które są priorytetowe
+//(pole Priorytetowa ma wartość true)
+// app.MapGet("/informacje/priorytetowa", async (Formula1Context db) =>
+//     await db.Informacje.Where(t => t.Priorytetowa).ToListAsync());
+
+//endpoint metody GET, pobiera obiekt Informacja o wybranym id
+app.MapGet("/api/races/id", async (int id, Formula1Context db) =>
+    await db.RaceModel.FindAsync(id)
+        is RaceModel race
+            ? Results.Ok(race)
+            : Results.NotFound());
+
+//endpoint metody POST, dodaje obiekt Informacja, pole klucza głównego (id) ma autoinkrement
+app.MapPost("/api/races", async (RaceModel race, Formula1Context db) =>
+{
+    db.RaceModel.Add(race);
+    await db.SaveChangesAsync();
+
+    return Results.Created($"/races/{race.RaceId}", race);
+});
+
+//endpoint metody PUT, modyfikuje obiekt o podanym id
+app.MapPut("/api/races/{id}", async (int id, RaceModel inputRace, Formula1Context db) =>
+{
+    var race = await db.RaceModel.FindAsync(id);
+
+    if (race is null) return Results.NotFound();
+
+    race.Year = inputRace.Year;
+    race.Round = inputRace.Round;
+    race.Circuit = inputRace.Circuit;
+    race.Name = inputRace.Name;
+    race.Date = inputRace.Date;
+    race.Url = inputRace.Url;
+
+    await db.SaveChangesAsync();
+
+    return Results.NoContent();
+});
+
+//endpoint metody DELETE, usuwa obiekt o podanym id
+app.MapDelete("/api/races/{id}", async (int id, Formula1Context db) =>
+{
+    if (await db.RaceModel.FindAsync(id) is RaceModel race)
+    {
+        db.RaceModel.Remove(race);
+        await db.SaveChangesAsync();
+        return Results.Ok(race);
+    }
+
+    return Results.NotFound();
+});
+
+// circuits
+// Endpoint metody GET, przesyła listę wszystkich obiektów Circuit
+app.MapGet("/api/circuits", async (Formula1Context db) =>
+    await db.CircuitModel.ToListAsync());
+
+// Endpoint metody GET, pobiera obiekt Circuit o wybranym id
+app.MapGet("/api/circuits/{id}", async (int id, Formula1Context db) =>
+    await db.CircuitModel.FindAsync(id)
+        is CircuitModel circuit
+            ? Results.Ok(circuit)
+            : Results.NotFound());
+
+// Endpoint metody POST, dodaje obiekt Circuit, pole klucza głównego (id) ma autoinkrement
+app.MapPost("/api/circuits", async (CircuitModel circuit, Formula1Context db) =>
+{
+    db.CircuitModel.Add(circuit);
+    await db.SaveChangesAsync();
+
+    return Results.Created($"/circuits/{circuit.CircuitId}", circuit);
+});
+
+// Endpoint metody PUT, modyfikuje obiekt o podanym id
+app.MapPut("/api/circuits/{id}", async (int id, CircuitModel inputCircuit, Formula1Context db) =>
+{
+    var circuit = await db.CircuitModel.FindAsync(id);
+
+    if (circuit is null) return Results.NotFound();
+
+    circuit.Name = inputCircuit.Name;
+    circuit.City = inputCircuit.City;
+    circuit.Country = inputCircuit.Country;
+    circuit.Url = inputCircuit.Url;
+
+    await db.SaveChangesAsync();
+
+    return Results.NoContent();
+});
+
+// Endpoint metody DELETE, usuwa obiekt o podanym id
+app.MapDelete("/api/circuits/{id}", async (int id, Formula1Context db) =>
+{
+    if (await db.CircuitModel.FindAsync(id) is CircuitModel circuit)
+    {
+        db.CircuitModel.Remove(circuit);
+        await db.SaveChangesAsync();
+        return Results.Ok(circuit);
+    }
+
+    return Results.NotFound();
+});
+
+// teams
+// Endpoint metody GET, przesyła listę wszystkich obiektów Team
+app.MapGet("/api/teams", async (Formula1Context db) =>
+    await db.TeamModel.ToListAsync());
+
+// Endpoint metody GET, przesyła listę wszystkich obiektów Team, które są priorytetowe
+//(pole Priorytetowa ma wartość true)
+// app.MapGet("/teams/priorytetowa", async (Formula1Context db) =>
+//     await db.Teams.Where(t => t.Priorytetowa).ToListAsync());
+
+// Endpoint metody GET, pobiera obiekt Team o wybranym id
+app.MapGet("/api/teams/{id}", async (int id, Formula1Context db) =>
+    await db.TeamModel.FindAsync(id)
+        is TeamModel team
+            ? Results.Ok(team)
+            : Results.NotFound());
+
+// Endpoint metody POST, dodaje obiekt Team, pole klucza głównego (id) ma autoinkrement
+app.MapPost("/api/teams", async (TeamModel team, Formula1Context db) =>
+{
+    db.TeamModel.Add(team);
+    await db.SaveChangesAsync();
+
+    return Results.Created($"/teams/{team.TeamId}", team);
+});
+
+// Endpoint metody PUT, modyfikuje obiekt o podanym id
+app.MapPut("/api/teams/{id}", async (int id, TeamModel inputTeam, Formula1Context db) =>
+{
+    var team = await db.TeamModel.FindAsync(id);
+
+    if (team is null) return Results.NotFound();
+
+    team.Name = inputTeam.Name;
+    team.Nationality = inputTeam.Nationality;
+    team.Url = inputTeam.Url;
+
+    await db.SaveChangesAsync();
+
+    return Results.NoContent();
+});
+
+// Endpoint metody DELETE, usuwa obiekt o podanym id
+app.MapDelete("/api/teams/{id}", async (int id, Formula1Context db) =>
+{
+    if (await db.TeamModel.FindAsync(id) is TeamModel team)
+    {
+        db.TeamModel.Remove(team);
+        await db.SaveChangesAsync();
+        return Results.Ok(team);
+    }
+
+    return Results.NotFound();
+});
+
+// drivers
+// Endpoint metody GET, przesyła listę wszystkich obiektów Driver
+app.MapGet("/api/drivers", async (Formula1Context db) =>
+    await db.DriverModel.ToListAsync());
+
+// Endpoint metody GET, przesyła listę wszystkich obiektów Driver, które są priorytetowe
+//(pole Priorytetowa ma wartość true)
+// app.MapGet("/drivers/priorytetowa", async (Formula1Context db) =>
+//     await db.Drivers.Where(t => t.Priorytetowa).ToListAsync());
+
+// Endpoint metody GET, pobiera obiekt Driver o wybranym id
+app.MapGet("/api/drivers/{id}", async (int id, Formula1Context db) =>
+    await db.DriverModel.FindAsync(id)
+        is DriverModel driver
+            ? Results.Ok(driver)
+            : Results.NotFound());
+
+// Endpoint metody POST, dodaje obiekt Driver, pole klucza głównego (id) ma autoinkrement
+app.MapPost("/api/drivers", async (DriverModel driver, Formula1Context db) =>
+{
+    db.DriverModel.Add(driver);
+    await db.SaveChangesAsync();
+
+    return Results.Created($"/drivers/{driver.DriverId}", driver);
+});
+
+// Endpoint metody PUT, modyfikuje obiekt o podanym id
+app.MapPut("/api/drivers/{id}", async (int id, DriverModel inputDriver, Formula1Context db) =>
+{
+    var driver = await db.DriverModel.FindAsync(id);
+
+    if (driver is null) return Results.NotFound();
+
+    driver.Number = inputDriver.Number;
+    driver.Code = inputDriver.Code;
+    driver.FirstName = inputDriver.FirstName;
+    driver.LastName = inputDriver.LastName;
+    driver.DateOfBirth = inputDriver.DateOfBirth;
+    driver.Nationality = inputDriver.Nationality;
+    driver.Url = inputDriver.Url;
+
+    await db.SaveChangesAsync();
+
+    return Results.NoContent();
+});
+
+// Endpoint metody DELETE, usuwa obiekt o podanym id
+app.MapDelete("/api/drivers/{id}", async (int id, Formula1Context db) =>
+{
+    if (await db.DriverModel.FindAsync(id) is DriverModel driver)
+    {
+        db.DriverModel.Remove(driver);
+        await db.SaveChangesAsync();
+        return Results.Ok(driver);
+    }
+
+    return Results.NotFound();
+});
+
+// race results
+// Endpoint metody GET, przesyła listę wszystkich obiektów RaceResults
+app.MapGet("/api/race-results", async (Formula1Context db) =>
+    await db.RaceResultsModel.ToListAsync());
+
+// Endpoint metody GET, przesyła listę wszystkich obiektów RaceResults dla danego wyścigu (o podanym id wyścigu)
+app.MapGet("/api/race-results/race/{raceId}", async (int raceId, Formula1Context db) =>
+    await db.RaceResultsModel.Where(rr => rr.Race.RaceId == raceId).ToListAsync());
+
+// Endpoint metody GET, przesyła listę wszystkich obiektów RaceResults dla danego kierowcy (o podanym id kierowcy)
+app.MapGet("/api/race-results/driver/{driverId}", async (int driverId, Formula1Context db) =>
+    await db.RaceResultsModel.Where(rr => rr.Driver.DriverId == driverId).ToListAsync());
+
+// Endpoint metody GET, przesyła listę wszystkich obiektów RaceResults dla danego zespołu (o podanym id zespołu)
+app.MapGet("/api/race-results/team/{teamId}", async (int teamId, Formula1Context db) =>
+    await db.RaceResultsModel.Where(rr => rr.Team.TeamId == teamId).ToListAsync());
+
+// Endpoint metody GET, pobiera obiekt RaceResults o wybranym id
+app.MapGet("/api/race-results/{id}", async (int id, Formula1Context db) =>
+    await db.RaceResultsModel.FindAsync(id)
+        is RaceResultsModel raceResult
+            ? Results.Ok(raceResult)
+            : Results.NotFound());
+
+// Endpoint metody POST, dodaje obiekt RaceResults, pole klucza głównego (id) ma autoinkrement
+app.MapPost("/api/race-results", async (RaceResultsModel raceResult, Formula1Context db) =>
+{
+    db.RaceResultsModel.Add(raceResult);
+    await db.SaveChangesAsync();
+
+    return Results.Created($"/race-results/{raceResult.ResultId}", raceResult);
+});
+
+// Endpoint metody PUT, modyfikuje obiekt o podanym id
+app.MapPut("/api/race-results/{id}", async (int id, RaceResultsModel inputRaceResult, Formula1Context db) =>
+{
+    var raceResult = await db.RaceResultsModel.FindAsync(id);
+
+    if (raceResult is null) return Results.NotFound();
+
+    raceResult.Race = inputRaceResult.Race;
+    raceResult.Driver = inputRaceResult.Driver;
+    raceResult.Team = inputRaceResult.Team;
+    raceResult.Position = inputRaceResult.Position;
+    raceResult.StartingGrid = inputRaceResult.StartingGrid;
+    raceResult.Laps = inputRaceResult.Laps;
+    raceResult.Time = inputRaceResult.Time;
+    raceResult.Points = inputRaceResult.Points;
+    raceResult.Sprint = inputRaceResult.Sprint;
+    raceResult.SetFastestLap = inputRaceResult.SetFastestLap;
+    raceResult.FastestLapTime = inputRaceResult.FastestLapTime;
+
+    await db.SaveChangesAsync();
+
+    return Results.NoContent();
+});
+
+// Endpoint metody DELETE, usuwa obiekt o podanym id
+app.MapDelete("/api/race-results/{id}", async (int id, Formula1Context db) =>
+{
+    if (await db.RaceResultsModel.FindAsync(id) is RaceResultsModel raceResult)
+    {
+        db.RaceResultsModel.Remove(raceResult);
+        await db.SaveChangesAsync();
+        return Results.Ok(raceResult);
+    }
+
+    return Results.NotFound();
+});
+
+
 app.Run();
 
 // using (var scope = app.Services.CreateScope())

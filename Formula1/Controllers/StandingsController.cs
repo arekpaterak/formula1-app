@@ -84,10 +84,10 @@ namespace Formula1.Controllers
                 var driver = await _context.DriverModel.FirstOrDefaultAsync(d => d.DriverId == driverId);
                 var points = raceResult.Points;
                 driverPoints[driver] += points;
-                if (raceResult.SetFastestLap == "Yes")
-                {
-                    driverPoints[driver] += 1;
-                }
+                // if (raceResult.SetFastestLap == "Yes")
+                // {
+                //     driverPoints[driver] += 1;
+                // }
             }
 
             // var sprintResults = await _context.RaceResultsModel.Where(r => r.Sprint == true).ToListAsync();
